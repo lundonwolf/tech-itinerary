@@ -2,6 +2,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <title>Interactive Tech Itinerary Checklist</title>
     <link rel="manifest" href="manifest.json">
     <script>
       if ('serviceWorker' in navigator) {
@@ -10,8 +12,6 @@
         });
       }
     </script>
-    <meta charset="UTF-8">
-    <title>Interactive Tech Itinerary Checklist</title>
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -107,6 +107,14 @@
     </style>
 </head>
 <body>
+<script>
+  const pass = prompt("Enter password:");
+  if (pass !== "Bigben1862*") {
+    document.body.innerHTML = "<h1 style='text-align:center;margin-top:20%;color:red;'>Access Denied</h1>";
+    throw new Error("Unauthorized access");
+  }
+</script>
+
     <h2>Interactive Tech Itinerary Checklist</h2>
     <div class="toggle-dark">
         <button onclick="toggleDarkMode()">Toggle Dark Mode</button>
@@ -240,6 +248,71 @@
                 <div class="detail"><strong>Email:</strong> lightbox@udr.com</div>
                 <div class="detail"><strong>WiFi:</strong> <span class="tag">Not listed</span></div>
                 <div class="detail"><strong>Instructions:</strong> Check if TV and data port installations are complete. Confirm device online status and perform final upload of media content.</div>
+            </label>
+        </div>
+    
+        <div class="item" id="item-10">
+            <input type="checkbox" onchange="moveToBottom(this)" />
+            <label>
+                <div class="property-title">AMLI Wallingford</div>
+                <div class="detail"><strong>Address:</strong> 1850 N 34th St, Seattle, WA 98103</div>
+                <div class="detail"><strong>Location:</strong> Lobby South Tower</div>
+                <div class="detail"><strong>Contact:</strong> AMLI Wallingford ()</div>
+                <div class="detail"><strong>Email:</strong> wallingford@amli.com</div>
+                <div class="detail"><strong>WiFi:</strong> <span class="tag">Free Astound WiFi</span></div>
+                <div class="detail"><strong>Instructions:</strong> Upload Groupon ad photo. Confirm monitor and device are functioning properly.</div>
+            </label>
+        </div>
+    
+        <div class="item" id="item-11">
+            <input type="checkbox" onchange="moveToBottom(this)" />
+            <label>
+                <div class="property-title">Lightbox</div>
+                <div class="detail"><strong>Address:</strong> 4545 8th Ave NW, Seattle, WA 98107</div>
+                <div class="detail"><strong>Location:</strong> Lobby</div>
+                <div class="detail"><strong>Contact:</strong> Shelby Stevens ((206) 490-9200)</div>
+                <div class="detail"><strong>Email:</strong> lightbox@udr.com</div>
+                <div class="detail"><strong>WiFi:</strong> <span class="tag">Not listed</span></div>
+                <div class="detail"><strong>Instructions:</strong> Check for ceiling outlets in Lobby and outlets in Mailroom. PM Shelby if issues found.</div>
+            </label>
+        </div>
+    
+        <div class="item" id="item-12">
+            <input type="checkbox" onchange="moveToBottom(this)" />
+            <label>
+                <div class="property-title">Pacific Sunrise</div>
+                <div class="detail"><strong>Address:</strong> 4616 22nd Ave NE, Seattle, WA 98105</div>
+                <div class="detail"><strong>Location:</strong> Model Unit</div>
+                <div class="detail"><strong>Contact:</strong> Trenton Honeycutt (206.523.1219)</div>
+                <div class="detail"><strong>Email:</strong> udistrict@assetliving.com</div>
+                <div class="detail"><strong>WiFi:</strong> <span class="tag">Not listed</span></div>
+                <div class="detail"><strong>Instructions:</strong> Install HDMI. Unit not viable until next week—confirm timing with resident.</div>
+            </label>
+        </div>
+    
+        <div class="item" id="item-13">
+            <input type="checkbox" onchange="moveToBottom(this)" />
+            <label>
+                <div class="property-title">Andante Apartments</div>
+                <div class="detail"><strong>Address:</strong> 3031 NE 137th St, Seattle, WA 98125</div>
+                <div class="detail"><strong>Location:</strong> Fitness Center</div>
+                <div class="detail"><strong>Contact:</strong> Krystal Cassadine ((206) 367-2266)</div>
+                <div class="detail"><strong>Email:</strong> andante.info@fpimgt.com</div>
+                <div class="detail"><strong>WiFi:</strong> <span class="tag">Not listed</span></div>
+                <div class="detail"><strong>Instructions:</strong> Install HDMI as scheduled. If unable to access property, leave voicemail and follow up.</div>
+            </label>
+        </div>
+    
+        <div class="item" id="item-14">
+            <input type="checkbox" onchange="moveToBottom(this)" />
+            <label>
+                <div class="property-title">Andante Apartments</div>
+                <div class="detail"><strong>Address:</strong> 3031 NE 137th St, Seattle, WA 98125</div>
+                <div class="detail"><strong>Location:</strong> Lobby</div>
+                <div class="detail"><strong>Contact:</strong> Krystal Cassadine ((206) 367-2266)</div>
+                <div class="detail"><strong>Email:</strong> andante.info@fpimgt.com</div>
+                <div class="detail"><strong>WiFi:</strong> <span class="tag">Not listed</span></div>
+                <div class="detail"><strong>Instructions:</strong> Offer to mount TV and install HDMI. Follow up if property access is not granted.</div>
             </label>
         </div>
     
