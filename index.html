@@ -1,0 +1,258 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="manifest" href="manifest.json">
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+          navigator.serviceWorker.register('service-worker.js');
+        });
+      }
+    </script>
+    <meta charset="UTF-8">
+    <title>Interactive Tech Itinerary Checklist</title>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f2f5;
+            color: #2c3e50;
+            margin: 0;
+            padding: 40px 20px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        h2 {
+            text-align: center;
+            font-size: 2em;
+            margin-bottom: 30px;
+        }
+        .toggle-dark {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        .toggle-dark button {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 8px;
+            background: #2d3436;
+            color: #fff;
+            font-size: 0.9em;
+            cursor: pointer;
+        }
+        .checklist {
+            max-width: 900px;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .item {
+            display: flex;
+            align-items: flex-start;
+            padding: 18px;
+            background: #ffffff;
+            border-left: 6px solid #74b9ff;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .item input[type="checkbox"] {
+            margin-top: 6px;
+            margin-right: 20px;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+        .item label {
+            width: 100%;
+            cursor: pointer;
+        }
+        .property-title {
+            font-weight: 700;
+            font-size: 1.2em;
+            color: #0984e3;
+        }
+        .detail {
+            margin: 4px 0;
+        }
+        .tag {
+            background-color: #dfe6e9;
+            color: #2d3436;
+            padding: 3px 8px;
+            border-radius: 5px;
+            font-size: 0.85em;
+            display: inline-block;
+            margin-top: 5px;
+        }
+        body.dark {
+            background-color: #2d3436;
+            color: #dfe6e9;
+        }
+        body.dark .item {
+            background-color: #3c4043;
+            border-left-color: #81ecec;
+        }
+        body.dark .property-title {
+            color: #00cec9;
+        }
+        body.dark .tag {
+            background-color: #636e72;
+            color: #ffffff;
+        }
+        body.dark .toggle-dark button {
+            background: #b2bec3;
+            color: #2d3436;
+        }
+    </style>
+</head>
+<body>
+    <h2>Interactive Tech Itinerary Checklist</h2>
+    <div class="toggle-dark">
+        <button onclick="toggleDarkMode()">Toggle Dark Mode</button>
+    </div>
+    <div class="checklist" id="checklist">
+
+        <div class="item" id="item-0">
+            <input type="checkbox" onchange="moveToBottom(this)" />
+            <label>
+                <div class="property-title">The Publix</div>
+                <div class="detail"><strong>Address:</strong> 504 5th Ave S, Seattle, WA 98104</div>
+                <div class="detail"><strong>Location:</strong> South Lobby</div>
+                <div class="detail"><strong>Contact:</strong> Arsha Dellosa ((206) 899-0257)</div>
+                <div class="detail"><strong>Email:</strong> info@publixseattle.com</div>
+                <div class="detail"><strong>WiFi:</strong> <span class="tag">Free Astound WiFi</span></div>
+                <div class="detail"><strong>Instructions:</strong> Ensure the device is powered on and connected to WiFi. Upload the latest Groupon ad image from your kit.</div>
+            </label>
+        </div>
+    
+        <div class="item" id="item-1">
+            <input type="checkbox" onchange="moveToBottom(this)" />
+            <label>
+                <div class="property-title">The Publix</div>
+                <div class="detail"><strong>Address:</strong> 504 5th Ave S, Seattle, WA 98104</div>
+                <div class="detail"><strong>Location:</strong> Amenties Area</div>
+                <div class="detail"><strong>Contact:</strong> Arsha Dellosa ((206) 899-0257)</div>
+                <div class="detail"><strong>Email:</strong> info@publixseattle.com</div>
+                <div class="detail"><strong>WiFi:</strong> <span class="tag">BT-Private !BT@ccess!</span></div>
+                <div class="detail"><strong>Instructions:</strong> Power on the TV if off, disable auto-sleep settings, reconnect WiFi, and upload current Groupon ad.</div>
+            </label>
+        </div>
+    
+        <div class="item" id="item-2">
+            <input type="checkbox" onchange="moveToBottom(this)" />
+            <label>
+                <div class="property-title">The Publix</div>
+                <div class="detail"><strong>Address:</strong> 504 5th Ave S, Seattle, WA 98104</div>
+                <div class="detail"><strong>Location:</strong> Package Area</div>
+                <div class="detail"><strong>Contact:</strong> Arsha Dellosa ((206) 899-0257)</div>
+                <div class="detail"><strong>Email:</strong> info@publixseattle.com</div>
+                <div class="detail"><strong>WiFi:</strong> <span class="tag">BT-Private !BT@ccess!</span></div>
+                <div class="detail"><strong>Instructions:</strong> Confirm device is online and connected to BT-Private WiFi. Upload the latest Groupon ad image.</div>
+            </label>
+        </div>
+    
+        <div class="item" id="item-3">
+            <input type="checkbox" onchange="moveToBottom(this)" />
+            <label>
+                <div class="property-title">Hilite</div>
+                <div class="detail"><strong>Address:</strong> 622 Rainier Ave S, Seattle, WA 98144</div>
+                <div class="detail"><strong>Location:</strong> Roof</div>
+                <div class="detail"><strong>Contact:</strong> Roger Sturgis ((206) 594-5183)</div>
+                <div class="detail"><strong>Email:</strong> hello@hiliteapartments.com</div>
+                <div class="detail"><strong>WiFi:</strong> <span class="tag">Free Astound WiFi</span></div>
+                <div class="detail"><strong>Instructions:</strong> Reconnect the HDMI device, verify Ethernet connectivity, and upload the Groupon ad content.</div>
+            </label>
+        </div>
+    
+        <div class="item" id="item-4">
+            <input type="checkbox" onchange="moveToBottom(this)" />
+            <label>
+                <div class="property-title">Rise on Madison</div>
+                <div class="detail"><strong>Address:</strong> 1400 Madison St, Seattle, WA 98104</div>
+                <div class="detail"><strong>Location:</strong> Lobby</div>
+                <div class="detail"><strong>Contact:</strong> Joe (206.420.4401)</div>
+                <div class="detail"><strong>Email:</strong> rise@bellwetherhousing.org</div>
+                <div class="detail"><strong>WiFi:</strong> <span class="tag">Not listed</span></div>
+                <div class="detail"><strong>Instructions:</strong> Check if TV and data port installations are complete. Confirm device online status and perform final upload of media content.</div>
+            </label>
+        </div>
+    
+        <div class="item" id="item-5">
+            <input type="checkbox" onchange="moveToBottom(this)" />
+            <label>
+                <div class="property-title">Sidney Apartments</div>
+                <div class="detail"><strong>Address:</strong> 400 Wall St, Seattle, WA 98121</div>
+                <div class="detail"><strong>Location:</strong> Lobby</div>
+                <div class="detail"><strong>Contact:</strong> Sidney Apartments ()</div>
+                <div class="detail"><strong>Email:</strong> info@sidneyapts.com</div>
+                <div class="detail"><strong>WiFi:</strong> <span class="tag">Office Camera_521, Leasing Precision_1720</span></div>
+                <div class="detail"><strong>Instructions:</strong> Check if TV and data port installations are complete. Confirm device online status and perform final upload of media content.</div>
+            </label>
+        </div>
+    
+        <div class="item" id="item-6">
+            <input type="checkbox" onchange="moveToBottom(this)" />
+            <label>
+                <div class="property-title">Sidney Apartments</div>
+                <div class="detail"><strong>Address:</strong> 400 Wall St, Seattle, WA 98121</div>
+                <div class="detail"><strong>Location:</strong> Package Room</div>
+                <div class="detail"><strong>Contact:</strong> Oliver Churchill (206.239.9700)</div>
+                <div class="detail"><strong>Email:</strong> info@sidneyapts.com</div>
+                <div class="detail"><strong>WiFi:</strong> <span class="tag">Wifi sidney400</span></div>
+                <div class="detail"><strong>Instructions:</strong> Call ahead to confirm construction status. If accessible, reconnect screen and verify display output.</div>
+            </label>
+        </div>
+    
+        <div class="item" id="item-7">
+            <input type="checkbox" onchange="moveToBottom(this)" />
+            <label>
+                <div class="property-title">AMLI Wallingford</div>
+                <div class="detail"><strong>Address:</strong> 1850 N 34th St, Seattle, WA 98103</div>
+                <div class="detail"><strong>Location:</strong> Mailroom</div>
+                <div class="detail"><strong>Contact:</strong> AMLI Wallingford ()</div>
+                <div class="detail"><strong>Email:</strong> wallingford@amli.com</div>
+                <div class="detail"><strong>WiFi:</strong> <span class="tag">LuxerOne !530custer</span></div>
+                <div class="detail"><strong>Instructions:</strong> Reconnect device if offline, ensure network settings are intact, and upload required promotional content.</div>
+            </label>
+        </div>
+    
+        <div class="item" id="item-8">
+            <input type="checkbox" onchange="moveToBottom(this)" />
+            <label>
+                <div class="property-title">AMLI Wallingford</div>
+                <div class="detail"><strong>Address:</strong> 1850 N 34th St, Seattle, WA 98103</div>
+                <div class="detail"><strong>Location:</strong> Lobby South Tower</div>
+                <div class="detail"><strong>Contact:</strong> AMLI Wallingford ()</div>
+                <div class="detail"><strong>Email:</strong> wallingford@amli.com</div>
+                <div class="detail"><strong>WiFi:</strong> <span class="tag">Free Astound WiFi</span></div>
+                <div class="detail"><strong>Instructions:</strong> Verify screen operation, reconnect to Free Astound WiFi if needed, and upload the current Groupon ad.</div>
+            </label>
+        </div>
+    
+        <div class="item" id="item-9">
+            <input type="checkbox" onchange="moveToBottom(this)" />
+            <label>
+                <div class="property-title">Lightbox</div>
+                <div class="detail"><strong>Address:</strong> 4545 8th Ave NW, Seattle, WA 98107</div>
+                <div class="detail"><strong>Location:</strong> Lobby</div>
+                <div class="detail"><strong>Contact:</strong> Shelby Stevens ((206) 490-9200)</div>
+                <div class="detail"><strong>Email:</strong> lightbox@udr.com</div>
+                <div class="detail"><strong>WiFi:</strong> <span class="tag">Not listed</span></div>
+                <div class="detail"><strong>Instructions:</strong> Check if TV and data port installations are complete. Confirm device online status and perform final upload of media content.</div>
+            </label>
+        </div>
+    
+    </div>
+    <script>
+        function toggleDarkMode() {
+            document.body.classList.toggle("dark");
+        }
+        function moveToBottom(checkbox) {
+            const item = checkbox.closest('.item');
+            const list = document.getElementById("checklist");
+            list.appendChild(item);
+        }
+    </script>
+</body>
+</html>
